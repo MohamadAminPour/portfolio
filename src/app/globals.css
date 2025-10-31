@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* fonts */
+@font-face {
+  font-family: IRANYekanBold;
+  src: url("/fonts/IRANYekanBold.ttf");
+}
+@font-face {
+  font-family: IRANYekanMedium;
+  src: url("/fonts/IRANYekanMedium.ttf");
+}
+@font-face {
+  font-family: Morabba;
+  src: url("/fonts/Morabba-Medium.ttf");
+}
+@font-face {
+  font-family: Graphik;
+  src: url("/fonts/Graphik-Medium.otf");
+}
+
+@theme {
+  --color-primary: #a3cef1;
+  --color-primary: #3a86ff;
+  --color-dark: #202020;
+}
+
+/* stryle */
+body {
+  font-family: Graphik;
+  background-color: #202020;
+  color: white;
+}
+
+
+
+.fadeInAnimation {
+  animation: fadeIn 1s ease-in-out 3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeInAnimation2 {
+  animation: fadeIn 1s ease-in-out 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
