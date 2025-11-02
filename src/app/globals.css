@@ -19,9 +19,13 @@
 }
 
 @theme {
-  --color-primary: #a3cef1;
   --color-primary: #3a86ff;
   --color-dark: #202020;
+  --color-darkM: #303030;
+}
+
+html{
+  scroll-behavior: smooth;
 }
 
 /* stryle */
@@ -29,9 +33,11 @@ body {
   font-family: Graphik;
   background-color: #202020;
   color: white;
+  overflow-x: hidden;
 }
-
-
+.container{
+  width: 80%;
+}
 
 .fadeInAnimation {
   animation: fadeIn 1s ease-in-out 3s forwards;
@@ -52,7 +58,6 @@ body {
     opacity: 1;
   }
 }
-
 
 @keyframes fade-in {
   from {

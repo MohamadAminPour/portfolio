@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { SiMongodb } from "react-icons/si";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { skillsIcon } from "@/lib/skillsIcon";
+
 interface IMenuLinks {
   id: number;
   title: string;
@@ -46,9 +48,9 @@ export default function Home() {
         data-aos="fade-down"
         data-aos-duration="1000"
         data-aos-delay="2000"
-        className="fixed w-full top-5 z-50 px-5 md:px-0"
+        className="static md:fixed top-0 md:top-5 w-full mt-5 md:mt-0 z-50"
       >
-        <nav className="container mx-auto flex items-center justify-between bg-zinc-700/30 p-5 rounded-3xl backdrop-blur-sm border-1 border-zinc-200/20">
+        <nav className="w-[90%] md:container mx-auto flex items-center justify-between bg-zinc-700/30 p-5 rounded-3xl backdrop-blur-sm border-1 border-zinc-200/20">
           {/* لوگو */}
           <Link href="/" className="text-primary text-[1.3rem] font-semibold">
             .PortFolio
@@ -80,7 +82,7 @@ export default function Home() {
 
           {/* دکمه گیت‌هاب */}
           <Link
-            href="https://github.com"
+            href="https://github.com/MohamadAminPour"
             target="_blank"
             className="hidden md:flex items-center justify-center text-dark duration-300 hover:text-white hover:scale-110 hover:rotate-2 gap-2 bg-primary rounded-xl px-4 py-2"
           >
@@ -117,7 +119,7 @@ export default function Home() {
       </header>
 
       {/* Hiro */}
-      <div className="relative w-full h-screen ">
+      <div className="relative w-full h-[80vh] md:h-[100vh]">
         <div className="absolute h-full w-full *:text[3rem] opacity-0 md:opacity-100 text-black *:border-1 *:border-zinc-200/20">
           <FaReact
             data-aos="fade-up"
@@ -209,7 +211,7 @@ export default function Home() {
 
           {/* آیکن پایین */}
           <Link
-            href="#projects"
+            href="#skills"
             data-aos="zoom-out"
             data-aos-delay="100"
             className="absolute fadeInAnimation bottom-10 hover:bg-dark text-[2.3rem] duration-300 text-gray-300"
@@ -221,10 +223,95 @@ export default function Home() {
 
       {/* About me */}
       {/* Skills */}
+      <div
+        className="flex items-center justify-center flex-col text-center pt-10 md:pt-28 md:mt-0 mt-20"
+        id="skills"
+      >
+        <h2
+          data-aos="zoom-out"
+          data-aos-duration="1000"
+          data-aos-delay="0"
+          className="text-2xl md:text-3xl font-bold"
+        >
+          مهارت‌های من
+        </h2>
+        <div
+          data-aos="zoom-out"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+          className="w-16 h-1 bg-primary mx-auto rounded-full mt-2"
+        ></div>
+        <p
+          data-aos="zoom-out"
+          data-aos-duration="1000"
+          data-aos-delay="400"
+          className="mt-3 text-gray-500 text-sm md:text-base w-[80%] md:max-w-md mx-auto"
+        >
+          مهارت هایی که در این چند سال آموزشش دیدم و در آن ها تخصص دارم را
+          میتوانید مشاهده کنید !
+        </p>
+
+        <ul className="container grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-5 gap-3">
+          {skillsIcon.map((item) => (
+            <li
+              data-aos="zoom-out"
+              data-aos-duration="1000"
+              data-aos-delay={`${item.id}00`}
+              key={item.id}
+              className="skillItem duration-300 p-3 bg-darkM rounded-xl shadow flex flex-row-reverse justify-between items-center"
+            >
+              <div className="font-medium flex items-center justify-center gap-2">
+                {item.skill}
+                {item.icon}
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-40 bg-gray-300 rounded-full h-3 overflow-hidden">
+                  <div
+                    className="bg-primary h-3"
+                    style={{ width: `${item.percentAge}%` }}
+                  ></div>
+                </div>
+                <span className="text-sm text-primary">{item.percentAge}%</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       {/* Projects */}
       {/* Contact me */}
       {/* Footer */}
 
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <br />
       <br />
       <br />
