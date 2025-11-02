@@ -11,6 +11,8 @@ import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { SiMongodb } from "react-icons/si";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { skillsIcon } from "@/lib/skillsIcon";
+import ProjectCard from "@/components/ProjectCard";
+import { usePathname } from "next/navigation";
 
 interface IMenuLinks {
   id: number;
@@ -20,10 +22,39 @@ interface IMenuLinks {
 
 const menuLinks: IMenuLinks[] = [
   { id: 1, title: "خانه", link: "/" },
-  { id: 2, title: "درباره من", link: "/aboutme" },
-  { id: 3, title: "مهارت ها", link: "/skills" },
-  { id: 4, title: "پروژه ها", link: "/projects" },
-  { id: 5, title: "ارتباط با من", link: "/contactme" },
+  { id: 2, title: "درباره من", link: "#aboutme" },
+  { id: 3, title: "مهارت ها", link: "#skills" },
+  { id: 4, title: "پروژه ها", link: "#projects" },
+  { id: 5, title: "ارتباط با من", link: "#contactme" },
+];
+
+const projects = [
+  {
+    id: 1,
+    title: "پنل مدیریت پزشکان",
+    description:
+      "سیستم رزرواسیون آنلاین دکتر با قابلیت های مدیریت ویزیت ها، پزشکان، بیماران، مشاهده پزشکان و رزرو نوبت",
+    image: "/images/visitme.jpeg",
+    tech: ["NextJs", "TypeScript", "React Query", "Tailwind", "API Routes"],
+    github: "https://github.com/MohamadAminPour/visit-me",
+    demo: "https://vissit-me.vercel.app/",
+  },
+  {
+    id: 2,
+    title: "سایت موزیک",
+    description:
+      "پلتفرم پخش موزیک با قابلیت های ایجاد موزیک، آلبوم، خواننده  میتوانید همه را مشاهده و بخش کنید !",
+    image: "/images/musicall.jpeg",
+    tech: [
+      "NextJs",
+      "TypeScript",
+      "Tailwind",
+      "NodeJs",
+      "ExpressJs",
+      "MongoDB",
+    ],
+    github: "https://github.com/MohamadAminPour/musicall",
+  },
 ];
 
 export default function Home() {
@@ -227,36 +258,16 @@ export default function Home() {
         className="flex items-center justify-center flex-col text-center pt-10 md:pt-28 md:mt-0 mt-20"
         id="skills"
       >
-        <h2
-          data-aos="zoom-out"
-          data-aos-duration="1000"
-          data-aos-delay="0"
-          className="text-2xl md:text-3xl font-bold"
-        >
-          مهارت‌های من
-        </h2>
-        <div
-          data-aos="zoom-out"
-          data-aos-duration="1000"
-          data-aos-delay="200"
-          className="w-16 h-1 bg-primary mx-auto rounded-full mt-2"
-        ></div>
-        <p
-          data-aos="zoom-out"
-          data-aos-duration="1000"
-          data-aos-delay="400"
-          className="mt-3 text-gray-500 text-sm md:text-base w-[80%] md:max-w-md mx-auto"
-        >
-          مهارت هایی که در این چند سال آموزشش دیدم و در آن ها تخصص دارم را
+        <h2 className="text-2xl md:text-3xl font-bold">مهارت‌ های من</h2>
+        <div className="w-16 h-1 bg-primary mx-auto rounded-full mt-2"></div>
+        <p className="mt-3 text-gray-500 text-sm md:text-base w-[80%] md:max-w-md mx-auto">
+          مهارت هایی که در این چند سال آموزش دیدم و در آن ها تخصص دارم را
           میتوانید مشاهده کنید !
         </p>
 
         <ul className="container grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-5 gap-3">
           {skillsIcon.map((item) => (
             <li
-              data-aos="zoom-out"
-              data-aos-duration="1000"
-              data-aos-delay={`${item.id}00`}
               key={item.id}
               className="skillItem duration-300 p-3 bg-darkM rounded-xl shadow flex flex-row-reverse justify-between items-center"
             >
@@ -279,6 +290,25 @@ export default function Home() {
       </div>
 
       {/* Projects */}
+
+      <div
+        className="flex items-center justify-center flex-col text-center pt-10 md:pt-28 md:mt-0 mt-20"
+        id="projects"
+      >
+        <h2 className="text-2xl md:text-3xl font-bold">پروژه های من</h2>
+        <div className="w-16 h-1 bg-primary mx-auto rounded-full mt-2"></div>
+        <p className="mt-3 text-gray-500 text-sm md:text-base w-[80%] md:max-w-md mx-auto">
+          کلی پروژه اینجاست که همه رو با شوق و ذوق طراحی و توسعه دادم، میتونین
+          آن ها را مشاهده کنید !
+        </p>
+
+        <ul className="container grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-5 gap-3">
+          {projects.map((p) => (
+            <ProjectCard key={p.id} {...p} />
+          ))}
+        </ul>
+      </div>
+
       {/* Contact me */}
       {/* Footer */}
 
