@@ -93,7 +93,7 @@ export default function Home() {
     });
   }, []);
   return (
-    <div className="relative h-screen ">
+    <div className="relative h-screen overflow-x-hidden">
       {/* Grid background */}
       <div className="absolute inset-0 grid grid-cols-6 md:grid-cols-12 grid-rows-8 opacity-20">
         {Array.from({ length: 96 }).map((_, i) => (
@@ -300,7 +300,7 @@ export default function Home() {
 
       {/* Projects */}
       <div
-        className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem]"
+        className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem] pb-10"
         id="projects"
       >
         <h2 className="text-2xl md:text-3xl font-bold">پروژه های من</h2>
@@ -327,7 +327,7 @@ export default function Home() {
         </p>
 
 
-        <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 *:relative *:flex *:items-center *:justify-center *:flex-col *:border-1 *:border-zinc-100/20 *:px-3 *:rounded-xl *:size-[12rem] sm:*:w-[15rem] sm:*:h-[14rem] *:bg-darkM mt-5">
+        <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 *:relative *:flex *:items-center *:justify-center *:flex-col *:border-1 *:border-zinc-100/20 *:p-3 *:rounded-xl *:size-[11rem] sm:*:w-[15rem] sm:*:h-[14rem] *:bg-darkM mt-5">
           {socials.map((item) => (
             <li key={item.id}>
               {item.icon}
