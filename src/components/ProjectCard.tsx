@@ -54,7 +54,7 @@ export default function ProjectCard({
           ))}
         </div>
 
-        <div className="absolute bottom-4 right-4 flex gap-3 mt-3">
+        <div className="absolute flex items-center justify-center bottom-4 right-4 flex gap-3 mt-3">
           {github && (
             <a
               href={github}
@@ -62,7 +62,7 @@ export default function ProjectCard({
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition"
             >
-              <FaGithub size={18} />
+              <FaGithub size={22} />
             </a>
           )}
           {demo && (
@@ -70,9 +70,10 @@ export default function ProjectCard({
               href={demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition"
+              className="text-black text-[.7rem] px-3 py-1 flex items-center justify-center gap-1 bg-green-500 rounded-full hover:text-white transition"
             >
-              <HiOutlineExternalLink size={20} />
+              <HiOutlineExternalLink size={18} />
+              <p>آنلاین</p>
             </a>
           )}
         </div>
