@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { BsFillHeartPulseFill, BsStars } from "react-icons/bs";
-import { FaCode, FaGithub, FaJs, FaNodeJs, FaReact } from "react-icons/fa";
+import { FaCode, FaGithub, FaJs, FaLinkedin, FaNodeJs, FaReact, FaTelegram } from "react-icons/fa";
 import { IoArrowDownCircle, IoNewspaperOutline } from "react-icons/io5";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
-import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
+import { RiInstagramFill, RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { SiMongodb } from "react-icons/si";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { skillsIcon } from "@/lib/skillsIcon";
@@ -16,6 +16,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { LuBrainCircuit } from "react-icons/lu";
 import {
+  MdEmail,
   MdOutlineSentimentVerySatisfied,
   MdOutlineTimer,
 } from "react-icons/md";
@@ -287,8 +288,8 @@ export default function Home() {
       </div>
 
       {/* About me */}
-      <div id="aboutme" className="flex items-center justify-center py-[8rem]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-[80%]">
+      <div id="aboutme" className="w-[90%] md:w-[80%] mx-auto flex items-center justify-center py-[8rem]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <div className="">
             <span className="bg-primary/20 inline-flex items-center justify-center gap-2 text-primary  text-[.9rem] px-4 py-2 border-1 border-zinc-200/20 rounded-full">
               <FaCode className="mt-1" />
@@ -353,7 +354,7 @@ export default function Home() {
           میتوانید مشاهده کنید !
         </p>
 
-        <ul className="container grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-5 gap-3">
+        <ul className="w-[90%] md:container *:border-1 *:border-zinc-200/10 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-5 gap-3">
           {skillsIcon.map((item) => (
             <li
               key={item.id}
@@ -389,7 +390,7 @@ export default function Home() {
           آن ها را مشاهده کنید !
         </p>
 
-        <ul className="container grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-5 gap-3">
+        <ul className="w-[90%] md:container *:border-1 *:border-zinc-200/10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-5 gap-3">
           {projects.map((p) => (
             <ProjectCard key={p.id} {...p} />
           ))}
@@ -397,6 +398,39 @@ export default function Home() {
       </div>
 
       {/* Contact me */}
+      <div className="flex items-center justify-center flex-col text-center pt-10 md:pt-28 md:mt-0 mt-20"
+        id="contactme">
+        <h2 className="text-2xl md:text-3xl font-bold">ارتباط با من</h2>
+        <div className="w-16 h-1 bg-primary mx-auto rounded-full mt-2"></div>
+        <p className="mt-3 text-gray-500 text-sm md:text-base w-[80%] md:max-w-md mx-auto">
+          شما میتوانید برای ارتباط و صحبت با من از طریق فضا های مجازی زیر اقدام کنید !
+        </p>
+
+        <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 *:flex *:items-center *:justify-center *:flex-col *:border-1 *:border-zinc-100/20 *:px-3 *:rounded-xl *:size-[12rem] sm:*:size-[15rem] *:bg-darkM mt-5">
+          <li>
+            <FaTelegram className="size-[4rem] md:size-[5rem]  p-1 rounded-md text-primary" />
+            <p className="mt-1 text-[1rem] md:text-[1.2rem]">Telegram</p>
+            <Link className="bg-dark w-full duration-300 hover:text-primary py-2 px-2 mt-5 md:mt-9 text-[.8rem] md:text-[.9rem] rounded-lg " href="">Send Text</Link>
+          </li>
+          <li>
+            <FaLinkedin className="size-[4rem] md:size-[5rem] rounded-md  text-primary" />
+            <p className="mt-1 text-[1rem] md:text-[1.2rem]">Linked in</p>
+            <Link className="bg-dark w-full duration-300 hover:text-primary py-2 px-2 mt-5 md:mt-9 text-[.8rem] md:text-[.9rem] rounded-lg " href="">Connect</Link>
+          </li>
+          <li>
+            <RiInstagramFill className="size-[4rem] md:size-[5rem] rounded-md  text-primary" />
+            <p className="mt-1 text-[1rem] md:text-[1.2rem]">Instagram</p>
+            <Link className="bg-dark w-full duration-300 hover:text-primary py-2 px-2 mt-5 md:mt-9 text-[.8rem] md:text-[.9rem] rounded-lg " href="">Follow</Link>
+          </li>
+          <li>
+            <MdEmail className="size-[4rem] md:size-[5rem]  rounded-md text-primary"/>
+            <p className="mt-1 text-[1rem] md:text-[1.2rem]">Email</p>
+            <Link className="bg-dark w-full duration-300 hover:text-primary py-2 px-2 mt-5 md:mt-9 text-[.8rem] md:text-[.9rem] rounded-lg " href="">Send Email</Link>
+          </li>
+        </ul>
+      </div>
+
+
       {/* Footer */}
 
       <br />
