@@ -23,7 +23,7 @@ export default function ProjectCard({
   demo,
 }: ProjectCardProps) {
   return (
-    <div className="bg-darkM rounded-2xl shadow-xl p-3 overflow-hidden">
+    <div className=" relative bg-darkM h-[27rem] rounded-2xl shadow-xl p-3 overflow-hidden">
       <div className="relative h-52 w-full overflow-hidden">
         <Link href="">
           <img
@@ -34,8 +34,8 @@ export default function ProjectCard({
         </Link>
       </div>
 
-      <div className="p-3 flex flex-col gap-2">
-        <Link href="" className="text-lg font-semibold text-white">
+      <div className="p-1 flex flex-col gap-2">
+        <Link href="" className="text-lg mt-3 font-semibold text-white">
           {title}
         </Link>
         <p className="text-sm text-gray-400 line-clamp-2">{description}</p>
@@ -54,7 +54,7 @@ export default function ProjectCard({
           ))}
         </div>
 
-        <div className="flex gap-3 mt-3">
+        <div className="absolute bottom-4 right-4 flex gap-3 mt-3">
           {github && (
             <a
               href={github}

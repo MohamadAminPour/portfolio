@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { BsStars } from "react-icons/bs";
-import { FaGithub, FaJs, FaNodeJs, FaReact } from "react-icons/fa";
-import { IoArrowDownCircle } from "react-icons/io5";
+import { BsFillHeartPulseFill, BsStars } from "react-icons/bs";
+import { FaCode, FaGithub, FaJs, FaNodeJs, FaReact } from "react-icons/fa";
+import { IoArrowDownCircle, IoNewspaperOutline } from "react-icons/io5";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
@@ -13,6 +13,13 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { skillsIcon } from "@/lib/skillsIcon";
 import ProjectCard from "@/components/ProjectCard";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { LuBrainCircuit } from "react-icons/lu";
+import {
+  MdOutlineSentimentVerySatisfied,
+  MdOutlineTimer,
+} from "react-icons/md";
+import { X } from "lucide-react";
 
 interface IMenuLinks {
   id: number;
@@ -31,7 +38,7 @@ const menuLinks: IMenuLinks[] = [
 const projects = [
   {
     id: 1,
-    title: "پنل مدیریت پزشکان",
+    title: "پنل رزرواسیون ویزیت می",
     description:
       "سیستم رزرواسیون آنلاین دکتر با قابلیت های مدیریت ویزیت ها، پزشکان، بیماران، مشاهده پزشکان و رزرو نوبت",
     image: "/images/visitme.jpeg",
@@ -41,7 +48,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "سایت موزیک",
+    title: "سایت موزیکال",
     description:
       "پلتفرم پخش موزیک با قابلیت های ایجاد موزیک، آلبوم، خواننده  میتوانید همه را مشاهده و بخش کنید !",
     image: "/images/musicall.jpeg",
@@ -54,6 +61,34 @@ const projects = [
       "MongoDB",
     ],
     github: "https://github.com/MohamadAminPour/musicall",
+  },
+  {
+    id: 3,
+    title: "لندینگ پیج آرامیس",
+    description:
+      "سایت آرامیس جایی برای خرید محصولاتی مانند مبل، تشک، پتو، بالشت و کلی لوازم دیگر !",
+    image: "/images/aramis.png",
+    tech: ["ReactJs", "Tailwind"],
+    github: "https://github.com/MohamadAminPour/musicall",
+    demo: "https://aramis.onrender.com/",
+  },
+  {
+    id: 4,
+    title: "سایت فیلم و سریال پوفوفیلم",
+    description:
+      "سایت پوفوفیلم جایی برای تماشا و دانلود جدیدترین فیلم و سریال های روز دنیای سینما !",
+    image: "/images/pofofilm.png",
+    tech: ["html", "css", "Js", "php", "mySql"],
+    github: "https://github.com/MohamadAminPour/pofofilm",
+  },
+  {
+    id: 5,
+    title: "سایت پروژه های دانشجویی پروجه",
+    description:
+      "سایت پروجه پلتفرمی برای انتشار پروژه های دانشجویی و خرید و فروش آنهاست تا دانشجویان بتوانند خودشان را به بقیه نشان دهند !",
+    image: "/images/proje.png",
+    tech: ["ReactJs", "Tailwind", "php", "Laravel", "mySql"],
+    github: "https://github.com/futureindustrryuni/mainProject",
   },
 ];
 
@@ -79,9 +114,9 @@ export default function Home() {
         data-aos="fade-down"
         data-aos-duration="1000"
         data-aos-delay="2000"
-        className="static md:fixed top-0 md:top-5 w-full mt-5 md:mt-0 z-50"
+        className="static md:fixed top-0 md:top-5 w-full md:mt-0 pt-5 z-50!"
       >
-        <nav className="w-[90%] md:container mx-auto flex items-center justify-between bg-zinc-700/30 p-5 rounded-3xl backdrop-blur-sm border-1 border-zinc-200/20">
+        <nav className="w-[90%] md:container mx-auto flex items-center justify-between bg-zinc-700/30 z-50! p-5 rounded-3xl backdrop-blur-sm border-1 border-zinc-200/20">
           {/* لوگو */}
           <Link href="/" className="text-primary text-[1.3rem] font-semibold">
             .PortFolio
@@ -89,7 +124,7 @@ export default function Home() {
 
           {/* دکمه منو در موبایل */}
           <button
-            className="text-white text-[1.5rem] md:hidden"
+            className="text-white text-[1.5rem] md:hidden cursor-pointer"
             onClick={() => setOpen(!open)}
           >
             {open ? <FaTimes /> : <FaBars />}
@@ -101,9 +136,8 @@ export default function Home() {
               <li key={item.id}>
                 <Link
                   href={item.link}
-                  className={`${
-                    item.link === "/" ? "text-primary" : "text-white"
-                  } hover:text-primary duration-300`}
+                  className={`${item.link === "/" ? "text-primary" : "text-white"
+                    } hover:text-primary duration-300`}
                 >
                   {item.title}
                 </Link>
@@ -121,36 +155,36 @@ export default function Home() {
             <p className="text-[.8rem]">گیت هاب</p>
           </Link>
         </nav>
-
-        {/* منوی موبایل */}
-        {open && (
-          <div className="md:hidden absolute top-[4.5rem] left-0 w-full bg-zinc-800/90 backdrop-blur-md rounded-2xl p-6 flex flex-col items-center gap-5 text-white animate-fade-in">
-            {menuLinks.map((item) => (
-              <Link
-                key={item.id}
-                href={item.link}
-                onClick={() => setOpen(false)}
-                className="hover:text-primary duration-300"
-              >
-                {item.title}
-              </Link>
-            ))}
-
-            <Link
-              href="https://github.com"
-              target="_blank"
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-center gap-2 bg-primary text-white rounded-xl px-5 py-2 mt-2 hover:scale-95 transition-all"
-            >
-              <FaGithub />
-              <span className="text-[.9rem]">گیت هاب</span>
-            </Link>
-          </div>
-        )}
       </header>
+      {/* منوی موبایل */}
+      {open && (
+        <div className="fixed h-screen top-0 left-0 w-full z-50! bg-zinc-800 backdrop-blur-md p-6 flex flex-col items-center justify-center gap-5 text-white animate-fade-in">
+          <p className="absolute top-5 right-5 cursor-pointer" onClick={() => setOpen(false)}><X /></p>
+          {menuLinks.map((item) => (
+            <Link
+              key={item.id}
+              href={item.link}
+              onClick={() => setOpen(false)}
+              className="hover:text-primary duration-300"
+            >
+              {" "}
+              {item.title}{" "}
+            </Link>
+          ))}{" "}
+          <Link
+            href="https://github.com"
+            target="_blank"
+            onClick={() => setOpen(false)}
+            className="flex items-center justify-center gap-2 bg-primary text-white rounded-xl px-5 py-2 mt-2 hover:scale-95 transition-all"
+          >
+            {" "}
+            <FaGithub /> <span className="text-[.9rem]">گیت هاب</span>
+          </Link>
+        </div>
+      )}
 
       {/* Hiro */}
-      <div className="relative w-full h-[80vh] md:h-[100vh]">
+      <div className="relative w-full h-[80vh] md:h-[100vh] -z-10">
         <div className="absolute h-full w-full *:text[3rem] opacity-0 md:opacity-100 text-black *:border-1 *:border-zinc-200/20">
           <FaReact
             data-aos="fade-up"
@@ -190,7 +224,7 @@ export default function Home() {
             className=" text-green-700 bg-zinc-900 shadow-2xs p-3 size-[3.5rem] rounded-2xl shadow-green-700 text-[3rem] absolute top-[35rem] left-[25rem] rotate-12"
           />
         </div>
-        <div className="absolute top-0 w-full h-full flex flex-col items-center justify-center text-center gap-5 px-4 z-30">
+        <div className="absolute top-0 w-full h-full flex flex-col items-center justify-center text-center gap-5 px-4">
           {/* عنوان اصلی */}
           <div
             data-aos="zoom-out"
@@ -232,7 +266,7 @@ export default function Home() {
           {/* دکمه معرفی */}
           <div data-aos="zoom-in" data-aos-delay="600">
             <Link
-              href="#about"
+              href="#aboutme"
               className="mt-4 fadeInAnimation inline-flex items-center gap-2 px-8 py-2 rounded-full text-white bg-gradient-to-r from-blue-600 to-indigo-500 hover:scale-95 duration-300 shadow-md"
             >
               منو بیشتر بشناس
@@ -253,9 +287,63 @@ export default function Home() {
       </div>
 
       {/* About me */}
+      <div id="aboutme" className="flex items-center justify-center py-[8rem]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-[80%]">
+          <div className="">
+            <span className="bg-primary/20 inline-flex items-center justify-center gap-2 text-primary  text-[.9rem] px-4 py-2 border-1 border-zinc-200/20 rounded-full">
+              <FaCode className="mt-1" />
+              مرن استک دولوپر
+            </span>
+            <p className="mt-3 text-3xl">محمد امین پور</p>
+            <p
+              className="mt-3 text-zinc-500 text-justify"
+              style={{ direction: "rtl" }}
+            >
+              توسعه دهنده و مرن استک با تخصص در زمینه های ExpressJs NodeJs
+              NextJs ReactJs MongoDB و دارای تجربه همکاری در تیم های برنامه
+              نویسی و همچنین روحیه کار تیمی، مسئولیت پذیرو سخت کوش. هدف اصلی من
+              توی این حوزه یادگیری تکنولوژی های جدید هست تا بتونم پروژه ها رو به
+              بهترین نحو ارائه بدم...
+            </p>
+            <ul className="mt-3 grid grid-cols-2 gap-2 *:flex *:items-center *:gap-2 *:bg-darkM *:rounded-lg *:px-2 *:py-2">
+              <li>
+                <BsFillHeartPulseFill className="bg-zinc-700 text-primary size-[2.5rem] p-2 rounded-md " />
+                <p>پایبند به قول</p>
+              </li>
+              <li>
+                <IoNewspaperOutline className="bg-zinc-700 text-primary size-[2.5rem] p-2 rounded-md " />
+                <p>مسئولیت پذیر</p>
+              </li>
+              <li>
+                <MdOutlineSentimentVerySatisfied className="bg-zinc-700 text-primary size-[2.5rem] p-2 rounded-md " />
+                <p>خوش اخلاق</p>
+              </li>
+              <li>
+                <MdOutlineTimer className="bg-zinc-700 text-primary size-[2.5rem] p-2 rounded-md " />
+                <p>وقت شناس</p>
+              </li>
+              <li>
+                <LuBrainCircuit className="bg-zinc-700 text-primary size-[2.5rem] p-2 rounded-md " />
+                <p>ذهن خلاق</p>
+              </li>
+            </ul>
+          </div>
+          <div className="" style={{ direction: "ltr" }}>
+            <div className="relative h-[20rem] md:h-[40rem] lg:h-[25rem] xl:h-[30rem] rounded-[1.5rem] overflow-hidden ">
+              <Image
+                src="/images/img.jpg"
+                alt=""
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Skills */}
       <div
-        className="flex items-center justify-center flex-col text-center pt-10 md:pt-28 md:mt-0 mt-20"
+        className="flex items-center justify-center flex-col text-center pt-10 md:pt-28"
         id="skills"
       >
         <h2 className="text-2xl md:text-3xl font-bold">مهارت‌ های من</h2>
@@ -290,7 +378,6 @@ export default function Home() {
       </div>
 
       {/* Projects */}
-
       <div
         className="flex items-center justify-center flex-col text-center pt-10 md:pt-28 md:mt-0 mt-20"
         id="projects"
