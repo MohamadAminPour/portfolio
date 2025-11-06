@@ -54,7 +54,7 @@ const projects = [
       "سایت آرامیس جایی برای خرید محصولاتی مانند مبل، تشک، پتو، بالشت و کلی لوازم دیگر !",
     image: "/images/aramis.png",
     tech: ["ReactJs", "Tailwind"],
-    github: "https://github.com/MohamadAminPour/musicall",
+    github: "https://github.com/MohamadAminPour/aramis",
     demo: "https://aramis.onrender.com/",
   },
   {
