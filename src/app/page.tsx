@@ -2,17 +2,15 @@
 
 import Link from "next/link";
 import { BsFillHeartPulseFill, BsStars } from "react-icons/bs";
-import { FaCode, FaGithub, FaJs, FaLinkedin, FaNodeJs, FaReact, FaTelegram } from "react-icons/fa";
+import { FaCode, FaJs, FaLinkedin, FaNodeJs, FaReact, FaTelegram } from "react-icons/fa";
 import { IoArrowDownCircle, IoNewspaperOutline } from "react-icons/io5";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
 import { RiInstagramFill, RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { SiMongodb } from "react-icons/si";
-import { FaBars, FaTimes } from "react-icons/fa";
 import { skillsIcon } from "@/lib/skillsIcon";
 import ProjectCard from "@/components/ProjectCard";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { LuBrainCircuit } from "react-icons/lu";
 import {
@@ -20,21 +18,7 @@ import {
   MdOutlineSentimentVerySatisfied,
   MdOutlineTimer,
 } from "react-icons/md";
-import { X } from "lucide-react";
-
-interface IMenuLinks {
-  id: number;
-  title: string;
-  link: string;
-}
-
-const menuLinks: IMenuLinks[] = [
-  { id: 1, title: "خانه", link: "/" },
-  { id: 2, title: "درباره من", link: "#aboutme" },
-  { id: 3, title: "مهارت ها", link: "#skills" },
-  { id: 4, title: "پروژه ها", link: "#projects" },
-  { id: 5, title: "ارتباط با من", link: "#contactme" },
-];
+import Header from "@/components/Header";
 
 const projects = [
   {
@@ -93,8 +77,15 @@ const projects = [
   },
 ];
 
+const socials = [
+  { id: 1, title: "Telegram", subTitle: "LissTomaNia", link: "https://t.me/LissTomaNia", icon: <FaTelegram className="size-[4rem] md:size-[5rem]  p-1 rounded-md text-primary" /> },
+  { id: 2, title: "Linked in", subTitle: "mohammad-aminpour18", link: "https://www.linkedin.com/in/mohammad-aminpour18", icon: <FaLinkedin className="size-[4rem] md:size-[5rem] rounded-md  text-primary" /> },
+  { id: 3, title: "Instagram", subTitle: "ma_aminpour18", link: "https://www.instagram/ma_aminpour18", icon: <RiInstagramFill className="size-[4rem] md:size-[5rem] rounded-md  text-primary" /> },
+  { id: 4, title: "Email", subTitle: "maminpour37@gmail.com", link: "mailto:maminpour37@gmail.com", icon: <MdEmail className="size-[4rem] md:size-[5rem]  rounded-md text-primary" /> },
+]
+
 export default function Home() {
-  const [open, setOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -102,7 +93,7 @@ export default function Home() {
     });
   }, []);
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen ">
       {/* Grid background */}
       <div className="absolute inset-0 grid grid-cols-6 md:grid-cols-12 grid-rows-8 opacity-20">
         {Array.from({ length: 96 }).map((_, i) => (
@@ -111,81 +102,10 @@ export default function Home() {
       </div>
 
       {/* Header */}
-      <header
-        data-aos="fade-down"
-        data-aos-duration="1000"
-        data-aos-delay="2000"
-        className="static md:fixed top-0 md:top-5 w-full md:mt-0 pt-5 z-50!"
-      >
-        <nav className="w-[90%] md:container mx-auto flex items-center justify-between bg-zinc-700/30 z-50! p-5 rounded-3xl backdrop-blur-sm border-1 border-zinc-200/20">
-          {/* لوگو */}
-          <Link href="/" className="text-primary text-[1.3rem] font-semibold">
-            .PortFolio
-          </Link>
-
-          {/* دکمه منو در موبایل */}
-          <button
-            className="text-white text-[1.5rem] md:hidden cursor-pointer"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <FaTimes /> : <FaBars />}
-          </button>
-
-          {/* منو در دسکتاپ */}
-          <ul className="hidden md:flex items-center gap-6">
-            {menuLinks.map((item) => (
-              <li key={item.id}>
-                <Link
-                  href={item.link}
-                  className={`${item.link === "/" ? "text-primary" : "text-white"
-                    } hover:text-primary duration-300`}
-                >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          {/* دکمه گیت‌هاب */}
-          <Link
-            href="https://github.com/MohamadAminPour"
-            target="_blank"
-            className="hidden md:flex items-center justify-center text-dark duration-300 hover:text-white hover:scale-110 hover:rotate-2 gap-2 bg-primary rounded-xl px-4 py-2"
-          >
-            <FaGithub className="text-[1.1rem]" />
-            <p className="text-[.8rem]">گیت هاب</p>
-          </Link>
-        </nav>
-      </header>
-      {/* منوی موبایل */}
-      {open && (
-        <div className="fixed h-screen top-0 left-0 w-full z-50! bg-zinc-800 backdrop-blur-md p-6 flex flex-col items-center justify-center gap-5 text-white animate-fade-in">
-          <p className="absolute top-5 right-5 cursor-pointer" onClick={() => setOpen(false)}><X /></p>
-          {menuLinks.map((item) => (
-            <Link
-              key={item.id}
-              href={item.link}
-              onClick={() => setOpen(false)}
-              className="hover:text-primary duration-300"
-            >
-              {" "}
-              {item.title}{" "}
-            </Link>
-          ))}{" "}
-          <Link
-            href="https://github.com"
-            target="_blank"
-            onClick={() => setOpen(false)}
-            className="flex items-center justify-center gap-2 bg-primary text-white rounded-xl px-5 py-2 mt-2 hover:scale-95 transition-all"
-          >
-            {" "}
-            <FaGithub /> <span className="text-[.9rem]">گیت هاب</span>
-          </Link>
-        </div>
-      )}
+      <Header />
 
       {/* Hiro */}
-      <div className="relative w-full h-[80vh] md:h-[100vh] -z-10">
+      <div className="relative w-full h-[80vh] md:h-[100vh] z-10">
         <div className="absolute h-full w-full *:text[3rem] opacity-0 md:opacity-100 text-black *:border-1 *:border-zinc-200/20">
           <FaReact
             data-aos="fade-up"
@@ -288,16 +208,16 @@ export default function Home() {
       </div>
 
       {/* About me */}
-      <div id="aboutme" className="w-[90%] md:w-[80%] mx-auto flex items-center justify-center py-[8rem]">
+      <div id="aboutme" className="w-[90%] md:w-[80%] mx-auto flex items-center justify-center pt-[10rem]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <div className="">
-            <span className="bg-primary/20 inline-flex items-center justify-center gap-2 text-primary  text-[.9rem] px-4 py-2 border-1 border-zinc-200/20 rounded-full">
+            <span className="bg-primary/20 inline-flex items-center justify-center gap-2 text-primary  text-[.8rem] md:text-[.9rem] px-4 py-2 border-1 border-zinc-200/20 rounded-full">
               <FaCode className="mt-1" />
               مرن استک دولوپر
             </span>
-            <p className="mt-3 text-3xl">محمد امین پور</p>
+            <p className="mt-3 text-[1.5rem] md:text-[2rem]">محمد امین پور</p>
             <p
-              className="mt-3 text-zinc-500 text-justify"
+              className="mt-3 text-zinc-500 text-[1rem] md:text-[1.1rem] text-justify"
               style={{ direction: "rtl" }}
             >
               توسعه دهنده و مرن استک با تخصص در زمینه های ExpressJs NodeJs
@@ -309,23 +229,23 @@ export default function Home() {
             <ul className="mt-3 grid grid-cols-2 gap-2 *:flex *:items-center *:gap-2 *:bg-darkM *:rounded-lg *:px-2 *:py-2">
               <li>
                 <BsFillHeartPulseFill className="bg-zinc-700 text-primary size-[2.5rem] p-2 rounded-md " />
-                <p>پایبند به قول</p>
+                <p className="text-[.8rem] md:text-[.9rem]">پایبند به قول</p>
               </li>
               <li>
                 <IoNewspaperOutline className="bg-zinc-700 text-primary size-[2.5rem] p-2 rounded-md " />
-                <p>مسئولیت پذیر</p>
+                <p className="text-[.8rem] md:text-[.9rem]">مسئولیت پذیر</p>
               </li>
               <li>
                 <MdOutlineSentimentVerySatisfied className="bg-zinc-700 text-primary size-[2.5rem] p-2 rounded-md " />
-                <p>خوش اخلاق</p>
+                <p className="text-[.8rem] md:text-[.9rem]">خوش اخلاق</p>
               </li>
               <li>
                 <MdOutlineTimer className="bg-zinc-700 text-primary size-[2.5rem] p-2 rounded-md " />
-                <p>وقت شناس</p>
+                <p className="text-[.8rem] md:text-[.9rem]">وقت شناس</p>
               </li>
               <li>
                 <LuBrainCircuit className="bg-zinc-700 text-primary size-[2.5rem] p-2 rounded-md " />
-                <p>ذهن خلاق</p>
+                <p className="text-[.8rem] md:text-[.9rem]">ذهن خلاق</p>
               </li>
             </ul>
           </div>
@@ -344,7 +264,7 @@ export default function Home() {
 
       {/* Skills */}
       <div
-        className="flex items-center justify-center flex-col text-center pt-10 md:pt-28"
+        className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem]"
         id="skills"
       >
         <h2 className="text-2xl md:text-3xl font-bold">مهارت‌ های من</h2>
@@ -354,7 +274,7 @@ export default function Home() {
           میتوانید مشاهده کنید !
         </p>
 
-        <ul className="w-[90%] md:container *:border-1 *:border-zinc-200/10 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-5 gap-3">
+        <ul className="w-[90%] md:w-[80%] *:border-1 *:border-zinc-200/10 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-5 gap-3">
           {skillsIcon.map((item) => (
             <li
               key={item.id}
@@ -380,7 +300,7 @@ export default function Home() {
 
       {/* Projects */}
       <div
-        className="flex items-center justify-center flex-col text-center pt-10 md:pt-28 md:mt-0 mt-20"
+        className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem]"
         id="projects"
       >
         <h2 className="text-2xl md:text-3xl font-bold">پروژه های من</h2>
@@ -390,7 +310,7 @@ export default function Home() {
           آن ها را مشاهده کنید !
         </p>
 
-        <ul className="w-[90%] md:container *:border-1 *:border-zinc-200/10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-5 gap-3">
+        <ul className="w-[90%] md:w-[80%] *:border-1 *:border-zinc-200/10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-5 gap-3">
           {projects.map((p) => (
             <ProjectCard key={p.id} {...p} />
           ))}
@@ -398,7 +318,7 @@ export default function Home() {
       </div>
 
       {/* Contact me */}
-      <div className="flex items-center justify-center flex-col text-center pt-10 md:pt-28 md:mt-0 mt-20"
+      <div className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem]"
         id="contactme">
         <h2 className="text-2xl md:text-3xl font-bold">ارتباط با من</h2>
         <div className="w-16 h-1 bg-primary mx-auto rounded-full mt-2"></div>
@@ -406,72 +326,34 @@ export default function Home() {
           شما میتوانید برای ارتباط و صحبت با من از طریق فضا های مجازی زیر اقدام کنید !
         </p>
 
-        <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 *:flex *:items-center *:justify-center *:flex-col *:border-1 *:border-zinc-100/20 *:px-3 *:rounded-xl *:size-[12rem] sm:*:size-[15rem] *:bg-darkM mt-5">
-          <li>
-            <FaTelegram className="size-[4rem] md:size-[5rem]  p-1 rounded-md text-primary" />
-            <p className="mt-1 text-[1rem] md:text-[1.2rem]">Telegram</p>
-            <Link className="bg-dark w-full duration-300 hover:text-primary py-2 px-2 mt-5 md:mt-9 text-[.8rem] md:text-[.9rem] rounded-lg " href="">Send Text</Link>
-          </li>
-          <li>
-            <FaLinkedin className="size-[4rem] md:size-[5rem] rounded-md  text-primary" />
-            <p className="mt-1 text-[1rem] md:text-[1.2rem]">Linked in</p>
-            <Link className="bg-dark w-full duration-300 hover:text-primary py-2 px-2 mt-5 md:mt-9 text-[.8rem] md:text-[.9rem] rounded-lg " href="">Connect</Link>
-          </li>
-          <li>
-            <RiInstagramFill className="size-[4rem] md:size-[5rem] rounded-md  text-primary" />
-            <p className="mt-1 text-[1rem] md:text-[1.2rem]">Instagram</p>
-            <Link className="bg-dark w-full duration-300 hover:text-primary py-2 px-2 mt-5 md:mt-9 text-[.8rem] md:text-[.9rem] rounded-lg " href="">Follow</Link>
-          </li>
-          <li>
-            <MdEmail className="size-[4rem] md:size-[5rem]  rounded-md text-primary"/>
-            <p className="mt-1 text-[1rem] md:text-[1.2rem]">Email</p>
-            <Link className="bg-dark w-full duration-300 hover:text-primary py-2 px-2 mt-5 md:mt-9 text-[.8rem] md:text-[.9rem] rounded-lg " href="">Send Email</Link>
-          </li>
+
+        <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 *:relative *:flex *:items-center *:justify-center *:flex-col *:border-1 *:border-zinc-100/20 *:px-3 *:rounded-xl *:size-[12rem] sm:*:w-[15rem] sm:*:h-[14rem] *:bg-darkM mt-5">
+          {socials.map((item) => (
+            <li key={item.id}>
+              {item.icon}
+              <p className="mt-1 text-[1rem] md:text-[1.2rem]">{item.title}</p>
+              <p title="کپی" onClick={() => {
+                navigator.clipboard.writeText(item.link);
+                setCopied(true);
+                console.log(copied)
+                setTimeout(() => setCopied(false), 1000);
+              }} className="cursor-copy hover:text-zinc-400 text-[.7rem] md:text-[.8rem] text-zinc-500 ">{item.subTitle}</p>
+              <Link className="bg-dark w-full duration-300 hover:text-primary py-2 px-2 mt-5 md:mt-5 text-[.8rem] md:text-[.9rem] rounded-lg " href={item.link}>Send Text</Link>
+              {/* Toast Message */}
+            </li>
+          ))}
         </ul>
       </div>
+      {copied && (
+        <p className="fixed top-[50%] left-[50%] border-1 border-zinc-200/20 translate-x-[-50%] translate-y-[50%] bg-dark text-xs px-3 py-2 flex items-center justify-center text-center w-[20rem] h-[3rem] rounded-lg shadow-md animate-fadeIn">
+          کپی شد !
+        </p>
+      )}
 
 
       {/* Footer */}
 
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+
       <br />
     </div>
   );

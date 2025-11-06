@@ -79,3 +79,30 @@ body {
 .instagram {
   background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
 }
+
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(5px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+
+/* رنگ اسکرول‌بار برای مرورگرهای Webkit */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #202020; /* رنگ بک‌گراند */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3a86ff; /* رنگ اسکرول */
+  border-radius: 20px;
+  border: 2px solid #202020; /* فاصله از بک‌گراند */
+}
