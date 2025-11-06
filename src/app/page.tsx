@@ -93,7 +93,7 @@ export default function Home() {
     });
   }, []);
   return (
-    <div className="relative h-screen overflow-x-hidden">
+    <div className="relative overflow-x-hidden ">
       {/* Grid background */}
       <div className="absolute inset-0 grid grid-cols-6 md:grid-cols-12 grid-rows-8 opacity-20">
         {Array.from({ length: 96 }).map((_, i) => (
@@ -208,7 +208,7 @@ export default function Home() {
       </div>
 
       {/* About me */}
-      <div id="aboutme" className="w-[90%] md:w-[80%] mx-auto flex items-center justify-center pt-[10rem]">
+      <div id="aboutme" className="w-[90%] md:w-[80%] mx-auto flex items-center justify-center pt-5 mt-[5rem]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <div className="">
             <span className="bg-primary/20 inline-flex items-center justify-center gap-2 text-primary  text-[.8rem] md:text-[.9rem] px-4 py-2 border-1 border-zinc-200/20 rounded-full">
@@ -264,7 +264,7 @@ export default function Home() {
 
       {/* Skills */}
       <div
-        className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem]"
+        className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem] mt-20"
         id="skills"
       >
         <h2 className="text-2xl md:text-3xl font-bold">مهارت‌ های من</h2>
@@ -300,7 +300,7 @@ export default function Home() {
 
       {/* Projects */}
       <div
-        className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem] pb-10"
+        className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem] pb-10 mt-20"
         id="projects"
       >
         <h2 className="text-2xl md:text-3xl font-bold">پروژه های من</h2>
@@ -318,7 +318,7 @@ export default function Home() {
       </div>
 
       {/* Contact me */}
-      <div className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem]"
+      <div className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem] mt20"
         id="contactme">
         <h2 className="text-2xl md:text-3xl font-bold">ارتباط با من</h2>
         <div className="w-16 h-1 bg-primary mx-auto rounded-full mt-2"></div>
@@ -345,15 +345,13 @@ export default function Home() {
         </ul>
       </div>
       {copied && (
-        <p className="fixed top-[50%] left-[50%] border-1 border-zinc-200/20 translate-x-[-50%] translate-y-[50%] bg-dark text-xs px-3 py-2 flex items-center justify-center text-center w-[20rem] h-[3rem] rounded-lg shadow-md animate-fadeIn">
+        <p className="fixed z-50 top-[5%] left-[50%] border-1 border-zinc-200/20 translate-x-[-50%] translate-y-[50%] bg-dark text-xs px-3 py-2 flex items-center justify-center text-center w-[20rem] h-[3rem] rounded-lg shadow-md animate-fadeIn">
           کپی شد !
         </p>
       )}
 
 
       {/* Footer */}
-
-
       <br />
     </div>
   );
