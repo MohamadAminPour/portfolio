@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { BsFillHeartPulseFill, BsStars } from "react-icons/bs";
 import { FaCode, FaJs, FaLinkedin, FaNodeJs, FaReact, FaTelegram } from "react-icons/fa";
 import { IoArrowDownCircle, IoNewspaperOutline } from "react-icons/io5";
@@ -19,6 +18,7 @@ import {
   MdOutlineTimer,
 } from "react-icons/md";
 import Header from "@/components/Header";
+import Link from "next/link";
 
 const projects = [
   {
