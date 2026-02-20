@@ -75,6 +75,14 @@ const projects = [
     tech: ["ReactJs", "Tailwind", "php", "Laravel", "mySql"],
     github: "https://github.com/futureindustrryuni/mainProject",
   },
+   {
+    id: 6,
+    title: "پنل مدیریت فروشگاه وردپرسی",
+    description:
+      "مدیریت سریع و از راه دور فروشگاه وردپرسی به همراه کلی قابلیت که توی وردپرس نیست!",
+    image: "/images/tavan.png",
+    tech: ["NextJs", "TypeScript", "React Query", "Tailwind", "NestJs"],
+  },
 ];
 
 const socials = [
@@ -93,10 +101,10 @@ export default function Home() {
     });
   }, []);
   return (
-    <div className="relative overflow-x-hidden ">
+    <div className="relative overflow-x-hidden">
       {/* Grid background */}
-      <div className="absolute inset-0 grid grid-cols-6 md:grid-cols-12 grid-rows-8 opacity-20">
-        {Array.from({ length: 96 }).map((_, i) => (
+      <div className="absolute h-screen inset-0 grid grid-cols-6 md:grid-cols-12 grid-rows-8 opacity-20">
+        {Array.from({ length: 100 }).map((_, i) => (
           <div key={i} className="border border-gray-500/40"></div>
         ))}
       </div>
@@ -168,8 +176,7 @@ export default function Home() {
             data-aos-duration="1000"
             className="text-[1.2rem] md:text-[1.4rem] text-gray-700 dark:text-gray-300"
           >
-            توسعه‌دهنده مرن‌استک | ReactJs • NextJs • NodeJs • ExpressJs •
-            MongoDB
+            توسعه‌دهنده فرانت اند | JavaScript • TypeScript • ReactJs • NextJs • NodeJs
           </p>
 
           {/* توضیح کوتاه */}
@@ -213,18 +220,14 @@ export default function Home() {
           <div className="">
             <span className="bg-primary/20 inline-flex items-center justify-center gap-2 text-primary  text-[.8rem] md:text-[.9rem] px-4 py-2 border-1 border-zinc-200/20 rounded-full">
               <FaCode className="mt-1" />
-              مرن استک دولوپر
+              فرانت اند دولوپر
             </span>
-            <p className="mt-3 text-[1.5rem] md:text-[2rem]">محمد امین پور</p>
+            <p className="mt-1 text-[1.5rem] md:text-[2rem]">محمد امین پور</p>
             <p
-              className="mt-3 text-zinc-500 text-[1rem] md:text-[1.1rem] text-justify"
+              className="mt-1 text-zinc-500 text-[.9rem] md:text-[1rem] text-justify"
               style={{ direction: "rtl" }}
             >
-              توسعه دهنده و مرن استک با تخصص در زمینه های ExpressJs NodeJs
-              NextJs ReactJs MongoDB و دارای تجربه همکاری در تیم های برنامه
-              نویسی و همچنین روحیه کار تیمی، مسئولیت پذیرو سخت کوش. هدف اصلی من
-              توی این حوزه یادگیری تکنولوژی های جدید هست تا بتونم پروژه ها رو به
-              بهترین نحو ارائه بدم...
+             چهار سال کار در فرانت‌اند به من یاد داده که رابط کاربری خوب فقط چند تا کامپوننت و رنگ نیست؛ یه داستانه که با کد تعریف می‌شه. برای من فرانت‌اند صرفاً پیاده‌سازی طرح‌ها نیست، بیشتر درباره اینه که بفهمم کاربر کجا کلافه می‌شه، کجا مکث می‌کنه و چطور می‌تونم این اصطکاک رو از سر راهش بردارم. دوست دارم محصولاتی بسازم که نه‌تنها درست کار کنن، بلکه حس خوبی به کاربر بدن و در عین حال، توسعه‌دهنده‌ای که بعداً کدهام رو می‌خونه، باهاشون راحت باشه. برام مهمه پشت هر خط کد، فکر و هدف مشخصی باشه؛ از معماری‌ای که بشه روش رشد کرد گرفته تا جزئیاتی که شاید کوچک باشن، اما تجربه کاربر رو می‌سازن. من بیشتر از اینکه عاشق حل چالش‌های صرفاً فنی باشم، به حل مشکلات واقعی آدم‌ها با کمک تکنولوژی علاقه دارم.
             </p>
             <ul className="mt-3 grid grid-cols-2 gap-2 *:flex *:items-center *:gap-2 *:bg-darkM *:rounded-lg *:px-2 *:py-2">
               <li>
@@ -318,7 +321,7 @@ export default function Home() {
       </div>
 
       {/* Contact me */}
-      <div className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem] mt20"
+      <div className="flex items-center justify-center flex-col text-center pt-10 md:pt-[10rem] my-20"
         id="contactme">
         <h2 className="text-2xl md:text-3xl font-bold">ارتباط با من</h2>
         <div className="w-16 h-1 bg-primary mx-auto rounded-full mt-2"></div>
@@ -338,7 +341,7 @@ export default function Home() {
                 console.log(copied)
                 setTimeout(() => setCopied(false), 1000);
               }} className="cursor-copy hover:text-zinc-400 text-[.7rem] md:text-[.8rem] text-zinc-500 ">{item.subTitle}</p>
-              <Link className="bg-dark w-full duration-300 hover:text-primary py-2 px-2 mt-5 md:mt-5 text-[.8rem] md:text-[.9rem] rounded-lg " href={item.link}>Send Text</Link>
+              <Link className="bg-dark w-full duration-300 hover:text-primary py-2 px-2 mt-5 md:mt-5 text-[.8rem] md:text-[.9rem] rounded-lg " href={item.link}>ارسال پیام</Link>
               {/* Toast Message */}
             </li>
           ))}
@@ -351,8 +354,6 @@ export default function Home() {
       )}
 
 
-      {/* Footer */}
-      <br />
     </div>
   );
 }

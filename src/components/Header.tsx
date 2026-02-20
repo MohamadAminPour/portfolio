@@ -88,7 +88,7 @@ export default function Header() {
                         </Link>
                     ))}{" "}
                     <Link
-                        href="https://github.com"
+                        href="https://github.com/MohamadAminPour"
                         target="_blank"
                         onClick={() => setOpen(false)}
                         className="flex items-center justify-center gap-2 bg-primary text-white rounded-xl px-5 py-2 mt-2 hover:scale-95 transition-all"
